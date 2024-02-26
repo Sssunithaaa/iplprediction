@@ -10,11 +10,11 @@ Responsive Design: The application is designed to work seamlessly across differe
 
 ## Installation
 To run the IPL Prediction Application locally, follow these steps:
-1. Clone this repository to your local machine:
-  git clone https://github.com/Sssunitha/iplprediction.git
-2. Install dependencies using npm:
-  npm install
-3. Start the development server:
+1. Clone this repository to your local machine: <br/>
+   git clone https://github.com/Sssunitha/iplprediction.git
+2. Install dependencies using npm: <br/>
+   npm install
+3. Start the development server:  <br/>
    npm start
 4. Open your browser and visit http://localhost:3000 to view the application.
 
