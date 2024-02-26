@@ -2,11 +2,11 @@
 Welcome to the IPL Prediction Application! This application allows users to predict the winners of IPL matches and win exciting prizes. It's built using React for the frontend and provides an intuitive interface for users to make their predictions.
 
 ## Features
-Predict IPL Match Winners: Users can predict the winners of upcoming IPL matches.
-Leaderboard: A leaderboard displays the top predictors based on their accuracy in predicting match winners.
-Prizes: Users have the chance to win prizes based on their prediction accuracy.
-User Authentication: Secure user authentication system to manage user accounts and predictions.
-Responsive Design: The application is designed to work seamlessly across different devices and screen sizes.
+Predict IPL Match Winners: Users can predict the winners of upcoming IPL matches.<br/>
+Leaderboard: A leaderboard displays the top predictors based on their accuracy in predicting match winners.<br/>
+Prizes: Users have the chance to win prizes based on their prediction accuracy.<br/>
+User Authentication: Secure user authentication system to manage user accounts and predictions.<br/>
+Responsive Design: The application is designed to work seamlessly across different devices and screen sizes.<br/>
 
 ## Installation
 To run the IPL Prediction Application locally, follow these steps:
