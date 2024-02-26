@@ -1,0 +1,10 @@
+import boy from "../Assets/boy.jpg";
+import sboy from "../Assets/sboy.jpg";
+import hboy from "../Assets/hboy.jpg";
+import girl from "../Assets/girl.jpg";
+import eren from "../Assets/eren.jpg";
+import wp7104495 from "../Assets/wp7104495.webp";
+import ipl from "../Assets/ipl.jpg";
+import iplogo from "../Assets/iplogo.png";
+const images = { iplogo, ipl, boy, sboy, hboy, girl, eren, wp7104495 };
+export default images;
