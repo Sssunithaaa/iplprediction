@@ -3,9 +3,39 @@ import { useForm } from "react-hook-form";
 import Input from "../Components/Input";
 import Button from "../Components/Button";
 import MainLayout from "../Components/MainLayout";
+import { useSelector } from "react-redux";
+import  {useMutation} from '@tanstack/react-query'
+import toast from 'react-hot-toast';
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import {userActions} from '../store/reducers/userReducers'
+import { signup,signin } from '../services/user'
 const Authform = () => {
+  const navigate = useNavigate()
   const [variant, setVariant] = useState("LOGIN");
   const [isLoading, setIsLoading] = useState();
+  const userState = useSelector((state)=> state.user)
+  const dispatch = useDispatch()
+  const { mutate, isLoadingg } = useMutation({
+    mutationFn: ({ name, email, password }) => {
+      return signup({ name, email, password })
+    },
+    onSuccess: (data) => {
+      dispatch(userActions.setUserInfo(data))
+      localStorage.setItem('account', JSON.stringify(data))
+    },
+    onError: (error) => {
+      toast.error(error.message)
+      console.log(error)
+    },
+  })
+
+  useEffect(() => {
+    if (userState.userInfo) {
+      navigate('/')
+    }
+  }, [navigate, userState.userInfo])
   const toggleVariant = useCallback(() => {
     if (variant === "LOGIN") {
       setVariant("REGISTER");
@@ -23,8 +53,12 @@ const Authform = () => {
       email: "",
       password: "",
     },
+     mode: 'onChange',
   });
-  const onSubmit = {};
+  const onSubmit =(data)=> {
+    const {name,email,password}=data;
+    mutate({name,email,password})
+  };
   return (
     <div className="fixed inset-0 z-[1000] flex rounded-lg justify-center items-center w-full overflow-auto bg-black/20 backdrop-blur-md shadow-2xl shadow-black">
       <div className="mt-8 sm:w-full rounded-lg max-w-lg w-full mx-6 font-sans sm:max-w-md  ">

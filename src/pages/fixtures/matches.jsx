@@ -6,11 +6,11 @@ const Matches = ({ data, className }) => {
   return (
     <Link
       to={`${data.matchID}`}
-      className={`overflow-hidden rounded-xl py-7 bg-white border-black-gradient  shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)] ${className}`}
+      className={`overflow-hidden rounded-xl py-7 bg-[#eeedf0]   shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)] ${className}`}
     >
       <div>
         <div className="flex flex-col justify-center mx-5 w-30 h-20 my-2">
-          <p className="flex flex-row gap-x-3 my-2 text-[#0818A8]">
+          <p className="flex flex-row gap-x-3 mb-2 text-[#0818A8]">
             <span className="mt-1">
               <FaLocationDot size={15} />
             </span>

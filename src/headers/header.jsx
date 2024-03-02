@@ -13,7 +13,7 @@ const NavItemInfo = [
   { name: "Home", type: "link", href: "/" },
   { name: "Leaderboard", type: "link", href: "/board" },
   { name: "Fixtures", type: "link", href: "/fixtures" },
-  { name: "About", type: "link", href: "/create" },
+  { name: "Profile", type: "link", href: "/user" },
 ];
 const NavItem = ({ item }) => {
   const [dropdown, setDropDown] = useState(false);
