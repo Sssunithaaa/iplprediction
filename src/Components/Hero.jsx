@@ -30,7 +30,7 @@ const Hero = () => {
   return (
     <section>
       <div
-        className={`${styles.paddingX} max-w-7xl my-0 mx-auto flex flex-col items-start gap-2 `}
+        className={`${styles.paddingX} max-w-7xl top-0 my-0 mx-auto flex flex-col items-start gap-1 `}
       >
         <div className="">
           <h1 className={`${styles.heroHeadText} text-black`}>

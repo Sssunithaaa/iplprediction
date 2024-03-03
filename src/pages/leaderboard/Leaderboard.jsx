@@ -1,11 +1,12 @@
 import React from "react";
-import { images } from "../../constants";
+
 import Headers from "../../headers/header";
 import { motion } from "framer-motion";
 import { useState, useRef } from "react";
 import "../styles.css";
 import { FaArrowLeft } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
+import { IoMdArrowDropdown } from "react-icons/io";
 const itemVariants = {
   open: {
     opacity: 1,
@@ -16,8 +17,8 @@ const itemVariants = {
 };
 const Leaderboard = () => {
   const [currentPage, setCurrentPage] = useState(0);
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [isOpen, setIsOpen] = useState(true);
+  const [selectedOption, setSelectedOption] = useState("Global");
 
   const handleItemClick = (option) => {
     setSelectedOption(option);
@@ -30,63 +31,62 @@ const Leaderboard = () => {
   const handlePrevPage = () => {
     setCurrentPage((prevPage) => prevPage - 1);
   };
+  const [searchQuery, setSearchQuery] = useState('');
   const leaderboardData = [
     {
       rank: 1,
       player: "Jean Marc",
       level: 100,
-      team: "Royal Challengers Bangalore",
-      stats: "Win",
-    },
+       },
     {
       rank: 2,
       player: "Marcus coco",
       level: 200,
-      team: "Mumbai Indians",
-      stats: "Lost",
+      
     },
     {
       rank: 3,
       player: "Marcus coco",
       level: 200,
-      team: "KKR",
-      stats: "Lost",
+      
     },
     {
       rank: 4,
       player: "Marcus coco",
       level: 200,
-      team: "RR",
-      stats: "Lost",
+    
     },
     {
       rank: 5,
       player: "Marcus coco",
       level: 200,
-      team: "LSG",
-      stats: "Lost",
+      
     },
     {
       rank: 6,
       player: "Marcus coco",
       level: 200,
-      team: "CSK",
-      stats: "Lost",
+      
     },
     // Add more data as needed
   ];
+  const handleSearchInputChange = (event) => {
+  setSearchQuery(event.target.value);
+};
   const recordsPerPage = 5;
-  const filteredData =
-    selectedOption === "Top 10" ? leaderboardData.slice(0, 3) : leaderboardData;
+ const filteredData = selectedOption === "Top 10" ? leaderboardData.slice(0, 3) : leaderboardData.filter((record) =>
+  record.player.toLowerCase().includes(searchQuery.toLowerCase())
+);
+
   // Calculate start and end index for pagination
   const startIndex = currentPage * recordsPerPage;
   const endIndex = startIndex + recordsPerPage;
   return (
     <>
-      <div className="flex flex-col my-auto">
+      <div className="flex flex-col my-auto min-w-xl overflow-clip">
         <Headers />
         <div
-          className={`w-full lg:h-[160px] md:h-[200px] h-[160px]  flex flex-col justify-center items-center"`}
+          className={`w-full my-0 lg:h-[160px] md:h-[200px] h-[160px]  flex flex-col justify-center items-center"`}
         >
           <p className="text-2xl font-bold mt-3 xs:mt-[1px] sm:mt-1 ml-3 lg:text-black lg:text-3xl text-center uppercase">
             Indian priemer Leaugue 2024
@@ -96,23 +96,34 @@ const Leaderboard = () => {
           </p>
         </div>
         <div class="container max-w-3xl px-4 mx-auto sm:px-8">
-          <div class="py-4 relative">
-            <div class="flex flex-row justify-center items-center text-center w-full mb-1 sm:mb-0">
+          <div class="py-2 relative">
+            <div className="flex justify-start"><input
+    type="text"
+    value={searchQuery}
+    onChange={handleSearchInputChange}
+    placeholder="Search player name..."
+    className="mb-2 px-2 w-30 py-2 border-[2px] border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+  />
+</div>
+            <div className="flex flex-row justify-between mt-3 mx-2"><div class="flex flex-row justify-start items-center text-center w-full mb-1 sm:mb-0">
               <h2 class="text-2xl uppercase font-bold">Leader Board</h2>
             </div>
-            <div className="absolute lg:right-[-47px] right-[-87px] xs:ml-[290px] sm:ml-[290px]  md:ml-[290px] top-0 py-8 mr-0 flex justify-between items-center">
+            
+            <div className="absolute lg:right-[-47px] right-[-87px] xs:ml-[290px] sm:ml-[290px]  md:ml-[290px] top-[54px] xs:py-0 py-5 mr-0 flex justify-between items-center">
               <motion.nav
                 initial={false}
                 animate={isOpen ? "open" : "closed"}
                 className="menu"
+                onHoverStart={() => setIsOpen(true)}
+                onHoverEnd={()=> setIsOpen(false)}
               >
                 <motion.button
                   whileTap={{ scale: 0.97 }}
                   onClick={() => setIsOpen(!isOpen)}
-                  onHoverStart={() => setIsOpen(!isOpen)}
-                  className="text-black"
+                  
+                  className="text-black border-2"
                 >
-                  <p className="text-black">Menu</p>
+                  <p className="text-black  text-[18px] rounded-md px-3 flex flex-row">{selectedOption} <span><IoMdArrowDropdown className="my-[1px]" size={20} /></span></p>
                   <motion.div
                     variants={{
                       open: { rotate: 180 },
@@ -144,7 +155,7 @@ const Leaderboard = () => {
                     },
                   }}
                   className="bg-black/60 text-white py-3  w-[110px] flex justify-center items-center right-0 ml-[2.8rem]"
-                  style={{ pointerEvents: isOpen ? "auto " : "none" }}
+                  style={{ pointerEvents: isOpen ? "auto " : "none",filter: "drop-shadow(1px 1px 1px #000000)" }}
                 >
                   <motion.li
                     variants={itemVariants}
@@ -169,59 +180,49 @@ const Leaderboard = () => {
                   </motion.li>
                 </motion.ul>
               </motion.nav>
-            </div>
+            </div></div>
 
-            <div class="flex justify-center items-center py-4 w-90 mt-7  mx-0 px-0">
-              <div class="flex items-center border-2 border-gray-200 shadow-2xl shadow-black overflow-auto scrollbar-hide rounded-lg">
-                <button
+            <div class="flex justify-center items-center py-4 w-90 mt-1  mx-0 px-0">
+              <button
                   onClick={handlePrevPage}
                   disabled={currentPage === 0}
-                  className="cursor-pointer my-auto rounded-full bg-black/10 p-2 w-[55px] animate-pulse"
+                  className="cursor-pointer mx-4 my-auto rounded-full bg-black/10 p-2 w-[48px] animate-pulse"
                 >
-                  <FaArrowLeft color="black" />
+                  <FaArrowLeft color="gray" />
                 </button>
+              <div class="flex items-center border-2 border-gray-200 shadow-2xl shadow-black overflow-auto scrollbar-hide rounded-lg">
+                
                 <table class="min-w-2xl lg:min-w-4xl  leading-normal">
                   <thead>
                     <tr>
                       <th
                         scope="col"
-                        class="px-5 py-3 text-sm font-semibold text-center text-gray-800 uppercase bg-white border-b border-gray-200"
+                        class="lg:px-9 px-5 py-3 text-sm font-semibold text-center text-gray-800 uppercase bg-white border-b border-gray-200"
                       >
                         Rank
                       </th>
                       <th
                         scope="col"
-                        class="px-5 py-3 text-sm font-semibold text-center text-gray-800 uppercase bg-white border-b border-gray-200"
+                        class="lg:px-9 px-5 py-3 text-sm font-semibold text-center text-gray-800 uppercase bg-white border-b border-gray-200"
                       >
-                        Player
+                        User
                       </th>
                       <th
                         scope="col"
-                        class="px-5 py-3 text-sm font-semibold text-center text-gray-800 uppercase bg-white border-b border-gray-200"
+                        class="lg:px-9 px-5 py-3 text-sm font-semibold text-center text-gray-800 uppercase bg-white border-b border-gray-200"
                       >
-                        Level
+                        Score
                       </th>
 
-                      <th
-                        scope="col"
-                        class="px-5 py-3 text-sm font-semibold text-center text-gray-800 uppercase bg-white border-b border-gray-200"
-                      >
-                        Team
-                      </th>
-                      <th
-                        scope="col"
-                        class="px-5 py-3 text-sm font-semibold text-center text-gray-800 uppercase bg-white border-b border-gray-200"
-                      >
-                        Stats
-                      </th>
+                      
                     </tr>
                   </thead>
 
-                  <tbody className="w-full ">
+                  <tbody className=" p-7">
                     {filteredData
                       .slice(startIndex, endIndex)
                       .map((record, index) => (
-                        <tr>
+                        <tr className="" key={index}>
                           <td class="px-5 py-8 text-sm bg-white border-b flex items-center justify-center h-auto border-gray-200">
                             <div class=" w-8 h-8  text-center flex justify-center items-center text-black rounded-md whitespace-no-wrap">
                               <p>{record.rank}</p>
@@ -244,44 +245,22 @@ const Leaderboard = () => {
                               </span>
                             </p>
                           </td>
-                          <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                            <p class="text-gray-900 whitespace-no-wrap text-center flex flex-row justify-center items-center">
-                              {record.team}
-                            </p>
-                          </td>
-
-                          <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                            <span
-                              class={`${
-                                record.stats === "Win"
-                                  ? "text-green-900"
-                                  : "text-red-700"
-                              } relative inline-block px-3 py-1 font-semibold leading-tight`}
-                            >
-                              <span
-                                aria-hidden="true"
-                                class={`${
-                                  record.stats === "Win"
-                                    ? "bg-green-200"
-                                    : "bg-red-200"
-                                } absolute inset-0 bg-green-200 rounded-full opacity-50`}
-                              ></span>
-                              <span class="relative">{record.stats}</span>
-                            </span>
-                          </td>
+                          
                         </tr>
                       ))}
                   </tbody>
                 </table>
-                <button
+                
+              </div>
+              <button
                   onClick={handleNextPage}
                   disabled={endIndex >= leaderboardData.length}
-                  className="cursor-pointer my-auto rounded-full bg-black/10 p-2 w-[55px] animate-pulse"
+                  className="cursor-pointer mx-4 my-auto rounded-full bg-black/10 p-2 w-[48px] animate-pulse"
                 >
-                  <FaArrowRight color="black" />
+                  <FaArrowRight color="gray" />
                 </button>
-              </div>
             </div>
+            
           </div>
         </div>
         ;

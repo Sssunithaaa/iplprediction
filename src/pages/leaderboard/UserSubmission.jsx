@@ -6,6 +6,7 @@ import { useState, useRef } from "react";
 import "../styles.css";
 import { FaArrowLeft } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
+import { IoMdArrowDropdown } from "react-icons/io";
 const itemVariants = {
   open: {
     opacity: 1,
@@ -16,8 +17,8 @@ const itemVariants = {
 };
 const UserSubmission = () => {
   const [currentPage, setCurrentPage] = useState(0);
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [isOpen, setIsOpen] = useState(true);
+  const [selectedOption, setSelectedOption] = useState("Default");
 
   const handleItemClick = (option) => {
     setSelectedOption(option);
@@ -150,22 +151,28 @@ const UserSubmission = () => {
         </div>
         <div class="container max-w-6xl px-4 mx-auto sm:px-8">
           <div class="py-8 relative">
-            <div class="flex flex-row justify-center items-center text-center w-full mb-1 sm:mb-0">
-              <h2 class="text-2xl uppercase font-bold">User Submissions</h2>
+            <div class="flex flex-row justify-start items-center text-center w-full mb-1 sm:mb-0">
+              <h2 class="text-xl uppercase ml-2 font-bold">User Submissions</h2>
             </div>
             <div className="absolute lg:right-[-47px] right-[-87px] xs:ml-[290px] sm:ml-[290px]  md:ml-[290px] top-0 py-8 mr-0 flex justify-between items-center">
               <motion.nav
                 initial={false}
                 animate={isOpen ? "open" : "closed"}
+                onHoverStart={() => setIsOpen(true)}
+                onHoverEnd={() => setIsOpen(false)}
                 className="menu"
               >
                 <motion.button
                   whileTap={{ scale: 0.97 }}
                   onClick={() => setIsOpen(!isOpen)}
-                  onHoverStart={() => setIsOpen(!isOpen)}
                   className="text-black"
                 >
-                  <p className="text-black">Menu</p>
+                  <p className="text-black  text-[18px] rounded-md px-3 flex flex-row">
+                    {selectedOption}{" "}
+                    <span>
+                      <IoMdArrowDropdown className="my-[1px]" size={20} />
+                    </span>
+                  </p>
                   <motion.div
                     variants={{
                       open: { rotate: 180 },
@@ -197,7 +204,10 @@ const UserSubmission = () => {
                     },
                   }}
                   className="bg-black/60 text-white py-3  w-[110px] flex justify-center items-center right-0 ml-[2.8rem]"
-                  style={{ pointerEvents: isOpen ? "auto " : "none" }}
+                  style={{
+                    pointerEvents: isOpen ? "auto " : "none",
+                    filter: "drop-shadow(1px 1px 1px #000000)",
+                  }}
                 >
                   <motion.li
                     variants={itemVariants}

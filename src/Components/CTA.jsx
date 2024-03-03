@@ -15,12 +15,12 @@ const CTA = () => {
           fillRule="evenodd"
           clipRule="evenodd"
           d="M2160 262.5H0V0C360 80 720 120 1080 120C1440 120 1800 80 2160 0V262.5Z"
-          fill="#050816"
+          fill="#0e0b14"
         />
       </svg>
       <section
         className="relative"
-        style={{ backgroundColor: "#050816", height: "200px" }}
+        style={{ backgroundColor: "#0e0b14", height: "200px" }}
       >
         <div className="container mx-auto grid grid-cols-12"></div>
       </section>

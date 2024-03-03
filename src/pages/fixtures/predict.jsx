@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { fadeIn } from "../../utils/motion";
 import { SectionWrapper } from "../../hoc";
 import CTA from "../../Components/CTA";
+import { images } from "../../constants";
 const PredictMatch = () => {
   const players = [
     "Faf du Plessis (SA)",
@@ -55,6 +56,31 @@ const PredictMatch = () => {
       link: `/${match.matchID}`,
     },
   ]);
+  const teamImages = {
+    "Chennai Super Kings": images.csk,
+    "Delhi Capitals": images.dc,
+    "Kolkata Knight Riders": images.kkr,
+    "Mumbai Indians": images.mi,
+    "Punjab Kings": images.pbks,
+    "Rajasthan Royals": images.rr,
+    "Royal Challengers Bangalore": images.rcb,
+    "Sunrisers Hyderabad": images.srh,
+    "Lucknow Super Giants": images.lsg,
+    "Gujurat Titans": images.gt,
+  };
+  const teamColors = {
+    "Chennai Super Kings": "yellow", // Yellow
+    "Delhi Capitals": "#136EA4", // Blue
+    "Kolkata Knight Riders": "#3A225D", // Purple
+    "Mumbai Indians": "#005DA0", // Blue
+    "Punjab Kings": "#E41E26", // Red
+    "Rajasthan Royals": "#2D3E8B", // Blue
+    "Royal Challengers Bangalore": "#000000", // Black
+    "Sunrisers Hyderabad": "#FF822A", // Orange
+    "Lucknow Super Giants": "#000080", // Navy
+    "Gujarat Titans": "#008000", // Green
+  };
+
   const [createError, setCreateError] = useState(false);
   const [success, setSuccess] = useState(false);
   const slug = useParams();
@@ -93,15 +119,39 @@ const PredictMatch = () => {
       wickets: parseInt(wickets),
     });
   };
+  console.log(teamColors[match.teamA]);
   return (
     <section className="h-screen">
       <Headers />
 
       <div className="flex flex-col mt-5  justify-center items-center md:w-full lg:w-full xs:w-[90%] xs:h-fit h-fit sm:w-[100%] sm:h-fit md:h-screen lg:h-fit overflow-hidden ">
+        <div className="w-full flex justify-center items-center text-2xl mt-3 font-semibold ">
+          <div className="flex flex-col justify-end items-center mx-4 gap-x-3 h-32">
+            <img
+              src={teamImages[match.teamA]}
+              alt=""
+              className="w-[110px] h-auto my-2"
+            />
+            <p className={`text-lg text-[${teamColors[match.teamA]}]`}>
+              &nbsp;{match.teamA}
+            </p>
+          </div>
+          <p className="text-purple-950">&nbsp;vs&nbsp;</p>
+          <div className="flex flex-col justify-end items-center mx-4 gap-x-3 h-32">
+            <img
+              src={teamImages[match.teamB]}
+              alt=""
+              className="w-[110px] h-auto my-2"
+            />
+            <p className={`text-lg text-${teamColors[match.teamB]}-600`}>
+              &nbsp;{match.teamB}
+            </p>
+          </div>
+        </div>
         <div className="h-fit flex flex-col justify-center items-center  max-w-4xl w-[500px]  rounded-lg bg-white m-5">
           <motion.p
             variants={fadeIn("down", "spring", 0.1, 1)}
-            className="text-3xl font-semibold my-5"
+            className="text-2xl font-semibold mt-5"
           >
             Make your predictions
           </motion.p>

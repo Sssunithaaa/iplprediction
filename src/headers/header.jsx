@@ -3,12 +3,12 @@ import { images } from "../constants";
 import { IoMenu } from "react-icons/io5";
 import { AiOutlineClose } from "react-icons/ai";
 import { IoIosArrowDown } from "react-icons/io";
-import { PiSmileyWinkDuotone } from "react-icons/pi";
-import { FaHandPointRight } from "react-icons/fa";
+
 /**import { useSelector } from "react-redux";  import { useDispatch } from "react-redux"; import { logout } from "../store/actions/user";*/
 import { createPortal } from "react-dom";
 import { useNavigate } from "react-router-dom";
 import Authform from "../pages/Authform";
+
 const NavItemInfo = [
   { name: "Home", type: "link", href: "/" },
   { name: "Leaderboard", type: "link", href: "/board" },
@@ -29,7 +29,7 @@ const NavItem = ({ item }) => {
           <div className="mx-auto">
             <a
               href={`${item.href}`}
-              className="cursor-pointer rounded-lg px-8 py-2 text-lg text-secondary hover:text-white hover:rounded-full "
+              className="cursor-pointer px-8 py-2 text-[18px] lg:text-secondary font-bold  shadow-none hover:text-slate-500 lg:hover:text-white "
             >
               {item.name}
             </a>
@@ -102,21 +102,22 @@ const userState = useSelector((state) => state.user); */
   return (
     <>
       {login && createPortal(<Authform />, document.getElementById("login"))}
-      <section className="sticky left-0 right-0 top-0 m-0 z-50 bg-[#29349e]">
+      <section className="sticky left-0 right-0 top-0 m-0 z-50 bg-tertiary">
         {/*mx - margin left right auto px-5*/}
         <header className="container mx-auto my-0 flex items-center justify-between px-5 sm:px-0 py-2">
           <div className="left-0 text-xl flex flex-row justify-center items-center gap-x-5 my-auto">
-            <div className="w-10">
-              {/*<img
-              src={images.iplogo}
-              alt="ipllogo"
-              className="w-auto h-[80px]"
-  ></img>*/}
-              <h3 className="font-bold text-black text-3xl m-3">
-                PREDICTIVE PLAY
-              </h3>
+            <div className=" flex flex-row">
+              {
+                <img
+                  src={images.iplogo}
+                  alt="ipllogo"
+                  className="w-auto h-[80px]"
+                ></img>
+              }
+              {/* {<h3 className="font-bold text-2xl lg:ml-4 text-secondary">
+                <p>PREDICTIVE  PLAY</p>
+              </h3>} */}
             </div>
-            <div className="w-12 h-12 font-sans font-bold text-secondary"></div>
           </div>
           <div className="z-50 lg:hidden">
             {naVisible ? (
@@ -135,17 +136,17 @@ const userState = useSelector((state) => state.user); */
           </div>
           <div
             className={`${
-              naVisible ? "right-0 black-gradient" : "-right-full bg-none "
-            } fixed bottom-0 top-0 z-[49] mt-[90px] flex w-full flex-col items-center justify-center gap-x-9 gap-y-8 bg-none p-4 transition-all duration-300 lg:static lg:mt-0 lg:w-auto lg:flex-row lg:justify-end`}
+              naVisible ? "right-0  backdrop-blur-3xl" : "-right-full "
+            } fixed bottom-0 top-0 z-[1000]  mt-[120px] flex w-full flex-col items-center bg-none  justify-center gap-x-9 gap-y-8 p-4 transition-all duration-300 lg:static lg:mt-0 lg:w-auto lg:flex-row lg:justify-end`}
           >
-            <ul className="flex flex-col items-center gap-x-5 gap-y-5 font-sans font-bold lg:flex-row">
+            <ul className="flex flex-col items-center gap-x-5 gap-y-5 font-bold lg:flex-row">
               {NavItemInfo.map((item) => (
                 <NavItem key={item.name} item={item} />
               ))}{" "}
             </ul>
             {false ? (
               <div className="group relative">
-                <div className="mx-auto flex flex-col items-center font-bold">
+                <div className="mx-auto flex flex-col items-center font-medium">
                   <button
                     className={`${
                       !profileDropdown ? "rounded-full hover:bg-gray-400" : ""
@@ -162,24 +163,6 @@ const userState = useSelector((state) => state.user); */
                   >
                     <ul className=" flex flex-col overflow-hidden rounded-lg shadow-lg">
                       <button
-                        type="button"
-                        href="/"
-                        className="px-4 py-2 hover:bg-dgreen hover:text-white lg:text-dgreen"
-                      >
-                        Dashboard
-                      </button>
-                      <button
-                        onClick={() => {
-                          navigate("/profile");
-                        }}
-                        type="button"
-                        href="/"
-                        className="px-4 py-2 hover:bg-dgreen hover:text-white lg:text-dgreen"
-                      >
-                        Profilee
-                      </button>
-
-                      <button
                         onClick={logoutHandler}
                         type="button"
                         href="/"
@@ -194,7 +177,7 @@ const userState = useSelector((state) => state.user); */
             ) : (
               <button
                 onClick={loginHandler}
-                className="hover:text-white text-secondary w-[30%] hover:bg-tertiary rounded-full border-2 border-primary px-5 sm:px-2 xs:px-1 py-1 font-bold transition-all duration-300 hover:bg-bottle-green lg:mt-0"
+                className="hover:text-white font-bold text-[20px] lg:text-secondary w-[30%] hover:bg-tertiary rounded-full border-2 border-primary px-5 sm:px-2 xs:px-1 py-1 transition-all duration-300 hover:bg-bottle-green lg:mt-0"
               >
                 SIGN IN
               </button>

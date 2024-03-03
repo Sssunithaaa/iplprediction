@@ -29,7 +29,8 @@
 /*4700b3*/
 
 .menu {
-    filter: drop-shadow(1px 1px 1px #000000);
+   
+    
     color: black;
     width: 250px;
 }
@@ -39,6 +40,8 @@ ul {
     flex-direction: column;
     gap: 5px;
     background: var(--accent);
+    
+    
 }
 
 li {
@@ -61,11 +64,11 @@ button {
     border: none;
     border-radius: 10px;
     padding: 0;
-    font-size: 18px;
-    font-weight: 700;
+    font-size: 16px;
+    font-weight: 650;
     cursor: pointer;
     width: 100%;
-    text-align: left;
+    text-align: center;
     margin-bottom: 5px;
     display: flex;
     justify-content: center;
