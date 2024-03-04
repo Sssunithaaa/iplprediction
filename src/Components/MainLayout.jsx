@@ -2,12 +2,11 @@ import React from "react";
 import Headers from "../headers/header";
 import Hero from "./Hero";
 import CTA from "./CTA";
-const MainLayout = () => {
+const MainLayout = ({ children }) => {
   return (
-    <div>
+    <div className="">
       <Headers />
-      <Hero />
-      <CTA />
+      {children}
     </div>
   );
 };

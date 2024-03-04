@@ -4,10 +4,8 @@ import { useState } from "react";
 import Headers from "../../headers/header";
 import Matches from "./matches";
 import { SectionWrapper } from "../../hoc";
+import MainLayout from "../../Components/MainLayout";
 const FixturePage = () => {
-  const styles = {
-    filter: "drop-shadow(1px 1px 1px #000000)",
-  };
   const [Breadcrumbsdata, setBreadcrumbsdata] = useState([
     {
       name: "Home",
@@ -117,34 +115,35 @@ const FixturePage = () => {
   ];
 
   return (
-    <section className={`h-screen my-auto bg-[#]`}>
-      <Headers />
-      <Breadcrumbs data={Breadcrumbsdata} activeName="Fixtures" />
-      <div className="container mx-auto">
-        <div className="flex flex-col ml-5">
-          <div>
-            <h2 className="text-3xl uppercase font-bold my-2">
-              IPL Predictions
-            </h2>
+    <MainLayout>
+      <section className={`lg:h-screen h-full  mt-[104px]`}>
+        <Breadcrumbs data={Breadcrumbsdata} activeName="Fixtures" />
+        <div className="container mx-auto">
+          <div className="flex flex-col ml-5">
+            <div>
+              <h2 className="text-3xl uppercase font-bold my-2">
+                IPL Predictions
+              </h2>
+            </div>
+            <div>
+              <p className="text-xl text-[#1F51FF] font-semibold">
+                Get ready to predict the winners and score big prizes with our
+                IPL prediction game! Check out the upcoming fixtures and make
+                your predictions now!
+              </p>
+            </div>
           </div>
-          <div>
-            <p className="text-xl text-[#1F51FF] font-semibold">
-              Get ready to predict the winners and score big prizes with our IPL
-              prediction game! Check out the upcoming fixtures and make your
-              predictions now!
-            </p>
+          <div className="flex flex-wrap gap-y-9 mt-5 pb-10 mx-5 gap-x-3 md:gap-x-5">
+            {matchData.map((match, index) => (
+              <Matches
+                data={match}
+                className="h-auto py-2 w-full sm:w-[calc(60%)] md:w-[calc(50%-20px)] lg:w-[calc(33.33%-20px)]"
+              />
+            ))}
           </div>
         </div>
-        <div className="flex flex-wrap gap-y-9 mt-5 pb-10 mx-5 gap-x-3 md:gap-x-5">
-          {matchData.map((match, index) => (
-            <Matches
-              data={match}
-              className="h-auto py-2 w-full sm:w-[calc(60%)] md:w-[calc(50%-20px)] lg:w-[calc(33.33%-20px)]"
-            />
-          ))}
-        </div>
-      </div>
-    </section>
+      </section>
+    </MainLayout>
   );
 };
 

@@ -29,7 +29,7 @@ const NavItem = ({ item }) => {
           <div className="mx-auto">
             <a
               href={`${item.href}`}
-              className="cursor-pointer px-8 py-2 text-[18px] lg:text-secondary font-bold  shadow-none hover:text-slate-500 lg:hover:text-white "
+              className="cursor-pointer px-8 py-2 text-[18px] lg:text-secondary font-bold  shadow-none hover:text-indigo-950 lg:hover:text-white "
             >
               {item.name}
             </a>
@@ -101,22 +101,28 @@ const userState = useSelector((state) => state.user); */
   const logoutHandler = () => {};
   return (
     <>
-      {login && createPortal(<Authform />, document.getElementById("login"))}
-      <section className="sticky left-0 right-0 top-0 m-0 z-50 bg-tertiary">
+      {login &&
+        createPortal(
+          <Authform setLogin={setLogin} login={login} />,
+          document.getElementById("login")
+        )}
+      <section className="fixed left-0 right-0 top-0 m-0 z-50 bg-[#1a237e] py-1">
         {/*mx - margin left right auto px-5*/}
         <header className="container mx-auto my-0 flex items-center justify-between px-5 sm:px-0 py-2">
           <div className="left-0 text-xl flex flex-row justify-center items-center gap-x-5 my-auto">
             <div className=" flex flex-row">
-              {
+              {/*
                 <img
                   src={images.iplogo}
                   alt="ipllogo"
                   className="w-auto h-[80px]"
                 ></img>
+        */}
+              {
+                <h3 className="font-bold text-2xl lg:ml-4 py-6 text-secondary">
+                  <p>PREDICTIVE PLAY</p>
+                </h3>
               }
-              {/* {<h3 className="font-bold text-2xl lg:ml-4 text-secondary">
-                <p>PREDICTIVE  PLAY</p>
-              </h3>} */}
             </div>
           </div>
           <div className="z-50 lg:hidden">
@@ -137,7 +143,7 @@ const userState = useSelector((state) => state.user); */
           <div
             className={`${
               naVisible ? "right-0  backdrop-blur-3xl" : "-right-full "
-            } fixed bottom-0 top-0 z-[1000]  mt-[120px] flex w-full flex-col items-center bg-none  justify-center gap-x-9 gap-y-8 p-4 transition-all duration-300 lg:static lg:mt-0 lg:w-auto lg:flex-row lg:justify-end`}
+            } fixed bottom-0 top-0 z-[1000]  mt-[98px] flex w-full flex-col items-center bg-none  justify-center gap-x-9 gap-y-8 p-4 transition-all duration-300 lg:static lg:mt-0 lg:w-auto lg:flex-row lg:justify-end`}
           >
             <ul className="flex flex-col items-center gap-x-5 gap-y-5 font-bold lg:flex-row">
               {NavItemInfo.map((item) => (

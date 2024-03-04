@@ -11,8 +11,8 @@ const SectionWrapper = (Component, idName) =>
         whileInView="show"
         viewport={{ once: true, amount: 0.25 }}
         className={`${
-          Component === "PredictMatch" ? styles.paddingg : styles.padding
-        } max-w-7xl mx-auto relative z-0`}
+          Component === "PredictMatch" ? styles.padding : styles.padding
+        } max-w-7xl min-w-full relative z-0`}
       >
         <span className="hash-span" id={idName}>
           &nbsp;

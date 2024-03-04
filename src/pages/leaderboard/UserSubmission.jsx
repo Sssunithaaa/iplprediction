@@ -17,7 +17,7 @@ const itemVariants = {
 };
 const UserSubmission = () => {
   const [currentPage, setCurrentPage] = useState(0);
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("Default");
 
   const handleItemClick = (option) => {
