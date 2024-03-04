@@ -1,12 +1,15 @@
 import React from "react";
 import Breadcrumbs from "../../Components/Breadcrumbs";
 import { motion } from "framer-motion";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import "../styles.css";
 import { FaArrowLeft } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
 import { IoMdArrowDropdown } from "react-icons/io";
 import MainLayout from "../../Components/MainLayout";
+import { useQuery } from "@tanstack/react-query";
+import { getLeaderBoard } from "../../services/leaderboard";
+import toast from "react-hot-toast";
 const itemVariants = {
   open: {
     opacity: 1,
@@ -42,6 +45,14 @@ const Leaderboard = () => {
     setCurrentPage((prevPage) => prevPage - 1);
   };
   const [searchQuery, setSearchQuery] = useState("");
+  const { data, isLoading, isError, error } = useQuery({
+    queryFn: () => getLeaderBoard({}),
+    queryKey: ["board"],
+    onError: (error) => {
+      toast.error(error.message);
+      console.log(error);
+    },
+  });
   const leaderboardData = [
     {
       rank: 1,
@@ -94,7 +105,7 @@ const Leaderboard = () => {
       <div className="flex flex-col mt-28 min-w-xl overflow-clip">
         <Breadcrumbs data={Breadcrumbsdata} activeName="Leaderboard" />
         <div
-          className={`w-full my-0 lg:h-[160px] border-t-2 md:h-[200px] h-[140px] border-b-2  flex flex-col justify-center items-center"`}
+          className={`w-full my-0 lg:h-[160px] bg-cover bg-no-repeat border-t-2 md:h-[200px] h-[140px] border-b-2  flex flex-col justify-center items-center"`}
         >
           <p className="text-2xl font-bold mt-3 xs:mt-[1px] sm:mt-1 ml-3 lg:text-black lg:text-3xl text-center uppercase">
             Indian priemer Leaugue 2024

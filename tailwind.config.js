@@ -23,6 +23,7 @@ module.exports = {
           "url('C:\\Users\\VINUTHA R\\Desktop\\4th sem\\iplpred\\my-app\\src\\Assets\\bluee.jpg')",
         crickettt:
           "url('C:\\Users\\VINUTHA R\\Desktop\\4th sem\\iplpred\\my-app\\src\\Assets\\crickettt.jpg')",
+        cric: "url('C:\\Users\\VINUTHA R\\Desktop\\4th sem\\iplpred\\my-app\\src\\Assets\\aksh-yadav-bY4cqxp7vos-unsplash.jpg')",
       },
     },
   },

@@ -127,8 +127,8 @@ const PredictMatch = () => {
     defaultValues: {
       team: "",
       player: "",
-      runs: null,
-      wickets: null,
+      runs: "",
+      wickets: "",
     },
     mode: "onChange",
   });
@@ -140,8 +140,8 @@ const PredictMatch = () => {
     addPredictMutation({
       team,
       player,
-      runs: parseInt(runs),
-      wickets: parseInt(wickets),
+      runs,
+      wickets,
     });
   };
 

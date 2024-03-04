@@ -101,11 +101,6 @@ const userState = useSelector((state) => state.user); */
   const logoutHandler = () => {};
   return (
     <>
-      {login &&
-        createPortal(
-          <Authform setLogin={setLogin} login={login} />,
-          document.getElementById("login")
-        )}
       <section className="fixed left-0 right-0 top-0 m-0 z-50 bg-[#1a237e] py-1">
         {/*mx - margin left right auto px-5*/}
         <header className="container mx-auto my-0 flex items-center justify-between px-5 sm:px-0 py-2">

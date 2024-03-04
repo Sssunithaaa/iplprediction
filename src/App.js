@@ -10,6 +10,7 @@ import PredictMatch from "./pages/fixtures/predict";
 import UserSubmission from "./pages/leaderboard/UserSubmission";
 import SliderPages from "./Components/SliderPages";
 import Intro from "./pages/HomePages/Intro";
+import Authform from "./pages/Authform";
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Intro />}></Route>
-
+          <Route exact path="/userinfo" element={<Authform />}></Route>
           <Route exact path="/board" element={<Leaderboard />}></Route>
           <Route exact path="/profile" element={<ProfilePage />}></Route>
 
@@ -27,6 +28,7 @@ function App() {
             path="/fixtures/:matchId"
             element={<PredictMatch />}
           ></Route>
+          <Route exact></Route>
           <Route exact path="/user" element={<UserSubmission />}></Route>
           <Route exact path="/images" element={<SliderPages />}></Route>
         </Routes>

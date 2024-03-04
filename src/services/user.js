@@ -1,13 +1,22 @@
 import axios from "axios";
-export const signup = async ({ name, email, password }) => {
+export const signup = async ({
+  username,
+  name,
+  email,
+  password1,
+  password2,
+}) => {
+  const body = JSON.stringify({
+    username,
+    name,
+    email,
+    password1,
+    password2,
+  });
   try {
     const { data } = await axios.post(
-      "http://localhost:5000/api/users/register",
-      {
-        name,
-        email,
-        password,
-      }
+      "http://localhost:8000/ipl2/register_user",
+      body
     );
     return data;
   } catch (error) {
@@ -19,11 +28,12 @@ export const signup = async ({ name, email, password }) => {
 };
 
 export const signin = async ({ email, password }) => {
+  const body = JSON.stringify({ email, password });
   try {
-    const { data } = await axios.post("http://localhost:5000/api/users/login", {
-      email,
-      password,
-    });
+    const { data } = await axios.post(
+      "http://localhost:5000/api/users/login",
+      body
+    );
     return data;
   } catch (error) {
     if (error.response && error.response.data.message)
@@ -52,4 +62,3 @@ export const getUserProfile = async ({ token }) => {
     throw new Error(error.message);
   }
 };
-

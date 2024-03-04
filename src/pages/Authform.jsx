@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { userActions } from "../store/reducers/userReducers";
 import { signup, signin } from "../services/user";
+import MainLayout from "../Components/MainLayout";
 const Authform = ({ setLogin, login }) => {
   const navigate = useNavigate();
   const [variant, setVariant] = useState("LOGIN");
@@ -20,6 +21,19 @@ const Authform = ({ setLogin, login }) => {
   const { mutate, isLoadingg } = useMutation({
     mutationFn: ({ name, email, password }) => {
       return signup({ name, email, password });
+    },
+    onSuccess: (data) => {
+      dispatch(userActions.setUserInfo(data));
+      localStorage.setItem("account", JSON.stringify(data));
+    },
+    onError: (error) => {
+      toast.error(error.message);
+      console.log(error);
+    },
+  });
+  const { signinmutate, isLoadinggg } = useMutation({
+    mutationFn: ({ email, password }) => {
+      return signin({ email, password });
     },
     onSuccess: (data) => {
       dispatch(userActions.setUserInfo(data));
@@ -49,19 +63,26 @@ const Authform = ({ setLogin, login }) => {
     formState: { errors, isValid },
   } = useForm({
     defaultValues: {
+      username: "",
       name: "",
       email: "",
-      password: "",
+      password1: "",
+      password2: "",
     },
     mode: "onChange",
   });
   const onSubmit = (data) => {
-    const { name, email, password } = data;
-    mutate({ name, email, password });
+    if (variant == "REGISTER") {
+      const { username, name, email, password1, password2 } = data;
+      mutate({ username, name, email, password1, password2 });
+    } else {
+      const { email, password1 } = data;
+      signinmutate({ email, password1 });
+    }
   };
   return (
-    <>
-      <div className="fixed inset-0 z-[1000] flex rounded-lg justify-center items-center w-full overflow-auto bg-black/20 backdrop-blur-md shadow-2xl shadow-black">
+    <MainLayout>
+      <div className="fixed inset-0 flex rounded-lg justify-center items-center w-full overflow-auto bg-black/20 backdrop-blur-md shadow-2xl shadow-black">
         <div className="mt-8 sm:w-full rounded-lg max-w-lg w-full mx-6 font-sans sm:max-w-md  ">
           <div className="bg-white px-4 py-8 shadow sm:rounded-lg rounded-lg ">
             <div className="flex flex-row justify-evenly mb-4 text-center font-bold">
@@ -89,6 +110,16 @@ const Authform = ({ setLogin, login }) => {
             <form onSubmit={handleSubmit(onSubmit)}>
               {variant === "REGISTER" && (
                 <Input
+                  label="Username"
+                  id="username"
+                  type="text"
+                  register={register}
+                  errors={errors}
+                  disabled={isLoading}
+                />
+              )}
+              {variant === "REGISTER" && (
+                <Input
                   label="Name"
                   id="name"
                   type="text"
@@ -107,8 +138,8 @@ const Authform = ({ setLogin, login }) => {
               />
               <Input
                 label="Password"
-                id="password"
-                type="password"
+                id="password1"
+                type="password1"
                 register={register}
                 errors={errors}
                 disabled={isLoading}
@@ -130,7 +161,7 @@ const Authform = ({ setLogin, login }) => {
           </div>
         </div>
       </div>
-    </>
+    </MainLayout>
   );
 };
 
