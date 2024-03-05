@@ -137,7 +137,7 @@ const UserSubmission = () => {
   const endIndex = startIndex + recordsPerPage;
   return (
     <>
-      <div className="flex flex-col my-auto">
+      <div className="flex flex-col my-auto mt-[100px]">
         <Headers />
         <div
           className={`w-full lg:h-[160px] md:h-[200px] h-[160px]  flex flex-col justify-center items-center"`}

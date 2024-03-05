@@ -4,7 +4,7 @@ import hboy from "../Assets/hboy.jpg";
 import girl from "../Assets/girl.jpg";
 import eren from "../Assets/eren.jpg";
 import wp7104495 from "../Assets/wp7104495.webp";
-
+import start from "../Assets/noun-start-over-111855.png";
 import iplogo from "../Assets/iplogo.png";
 import pbks from "../Assets/pbks.png";
 import gt from "../Assets/gt.png";
@@ -40,5 +40,6 @@ const images = {
   dc,
   srh,
   rr,
+  start,
 };
 export default images;

@@ -126,7 +126,7 @@ const FixturePage = () => {
               </h2>
             </div>
             <div>
-              <p className="text-xl text-[#1F51FF] font-semibold">
+              <p className="text-xl text-[#2b072e] font-semibold">
                 Get ready to predict the winners and score big prizes with our
                 IPL prediction game! Check out the upcoming fixtures and make
                 your predictions now!

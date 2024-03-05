@@ -53,6 +53,8 @@ const Leaderboard = () => {
       console.log(error);
     },
   });
+  const LeaderboardData = data;
+  console.log(LeaderboardData);
   const leaderboardData = [
     {
       rank: 1,
@@ -102,10 +104,14 @@ const Leaderboard = () => {
   const endIndex = startIndex + recordsPerPage;
   return (
     <MainLayout>
-      <div className="flex flex-col mt-28 min-w-xl overflow-clip">
-        <Breadcrumbs data={Breadcrumbsdata} activeName="Leaderboard" />
+      <div className="flex flex-col mt-[100px] min-w-xl overflow-clip">
+        <Breadcrumbs
+          data={Breadcrumbsdata}
+          activeName="Leaderboard"
+          className="mt-2"
+        />
         <div
-          className={`w-full my-0 lg:h-[160px] bg-cover bg-no-repeat border-t-2 md:h-[200px] h-[140px] border-b-2  flex flex-col justify-center items-center"`}
+          className={`w-full my-0 lg:h-[160px] bg-cover bg-no-repeat border-t-2 md:h-[200px] h-[140px] border-b-2  flex flex-col justify-center items-center`}
         >
           <p className="text-2xl font-bold mt-3 xs:mt-[1px] sm:mt-1 ml-3 lg:text-black lg:text-3xl text-center uppercase">
             Indian priemer Leaugue 2024

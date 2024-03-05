@@ -5,7 +5,10 @@ export const getLeaderBoard = async ({}) => {
     "Content-Type": "application/json",
   };
   try {
-    const { data } = await axios.get("http://localhost:5000/matches", config);
+    const { data } = await axios.get(
+      "http://localhost:8000/ipl2/leaderboard1/",
+      config
+    );
     return data;
   } catch (error) {
     if (error.response && error.response.data.message)

@@ -4,6 +4,7 @@ import { fadeIn, textVariant, slideIn } from "../utils/motion";
 import { motion } from "framer-motion";
 import { styles } from "../style";
 import CTA from "./CTA";
+import { useNavigate } from "react-router-dom";
 const texts = [
   { index: 1, title: "Browse the upcoming matches and make your predictions." },
   { index: 2, title: "Earn points based on the accuracy of your predictions." },
@@ -27,6 +28,7 @@ const HowItWorks = ({ index, title }) => {
 };
 const Hero = () => {
   const index = 1;
+  const navigate = useNavigate();
   return (
     <section>
       <div
@@ -34,7 +36,7 @@ const Hero = () => {
       >
         <div className="">
           <h1 className={`${styles.heroHeadText} text-black`}>
-            Welcome to <span className="text-[#29349e]">Predictive Play</span>
+            Welcome to <span className="text-[#2b072e]">Predictive Play</span>
           </h1>
           <p className={`text-xl mt-2 font-medium`}>
             Predict the outcomes of the matches and earn points to climb the
@@ -74,12 +76,19 @@ const Hero = () => {
                 </p>
               </div>
               <div className="w-[50%] text-xl  font-medium flex flex-col justify-center items-center">
-                <button className="bg-[#29349e]  w-[50%] text-secondary p-2 rounded-md hover:text-white">
-                  SIGN IN
-                </button>
-                <button className="bg-[#29349e]  w-[50%] text-secondary p-2 rounded-md hover:text-white">
-                  Register
-                </button>
+                <a href="/userinfo">
+                  <button
+                    onClick={navigate("/userinfo")}
+                    className="bg-[#29349e]  w-[50%] text-secondary p-2 rounded-md hover:text-white"
+                  >
+                    SIGN IN
+                  </button>
+                </a>
+                <a href="userinfo">
+                  <button className="bg-[#29349e]  w-[50%] text-secondary p-2 rounded-md hover:text-white">
+                    Register
+                  </button>
+                </a>
                 <p></p>
               </div>
             </div>

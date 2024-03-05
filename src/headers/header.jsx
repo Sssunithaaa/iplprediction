@@ -8,6 +8,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import { createPortal } from "react-dom";
 import { useNavigate } from "react-router-dom";
 import Authform from "../pages/Authform";
+import { useSelector } from "react-redux";
 
 const NavItemInfo = [
   { name: "Home", type: "link", href: "/" },
@@ -83,6 +84,7 @@ const Headers = () => {
 const userState = useSelector((state) => state.user); */
   }
   const navigate = useNavigate();
+  const userState = useSelector((state) => state.user);
   const [naVisible, setNavisible] = useState(false);
   const [profileDropdown, setProfileDropdown] = useState();
   const [login, setLogin] = useState(false);
@@ -101,7 +103,7 @@ const userState = useSelector((state) => state.user); */
   const logoutHandler = () => {};
   return (
     <>
-      <section className="fixed left-0 right-0 top-0 m-0 z-50 bg-[#1a237e] py-1">
+      <section className="fixed left-0 right-0 top-0 m-0 z-50 bg-[#1e0121] py-1">
         {/*mx - margin left right auto px-5*/}
         <header className="container mx-auto my-0 flex items-center justify-between px-5 sm:px-0 py-2">
           <div className="left-0 text-xl flex flex-row justify-center items-center gap-x-5 my-auto">
@@ -145,7 +147,7 @@ const userState = useSelector((state) => state.user); */
                 <NavItem key={item.name} item={item} />
               ))}{" "}
             </ul>
-            {false ? (
+            {userState.userInfo ? (
               <div className="group relative">
                 <div className="mx-auto flex flex-col items-center font-medium">
                   <button

@@ -27,7 +27,7 @@ const PredictMatch = () => {
   ];
   const match = {
     matchID: 1,
-    matchdate: "2024-03-01",
+    matchdate: "2024-04-01",
     matchtime: "19:30:00",
     teamA: "Mumbai Indians",
     teamAno: 1,
@@ -147,7 +147,7 @@ const PredictMatch = () => {
 
   return (
     <MainLayout>
-      <section className="h-screen">
+      <section className="h-full ">
         <div className="flex flex-col mt-24 justify-center items-center md:w-full lg:w-full xs:w-[90%] xs:h-fit h-fit sm:w-[100%] sm:h-fit md:h-screen lg:h-fit overflow-hidden ">
           <div className="w-full flex justify-center items-center text-2xl mt-3 font-semibold ">
             <motion.div
@@ -180,7 +180,56 @@ const PredictMatch = () => {
               </p>
             </motion.div>
           </div>
-          <div className="h-fit flex flex-col justify-center items-center  max-w-4xl w-[500px]  rounded-lg bg-white m-5">
+          <div className="mt-5 flex flex-col gap-y-4 ">
+            <div className="bg-[#eeedf0]   shadow-lg p-3 rounded-md">
+              <p className="text-left font-semibold my-2 text-xl">
+                MI Current squad
+              </p>
+              <div className="text-lg">
+                <b>Wicketkeepers:</b> Ishan Kishan, Vishnu Vinod.
+                <p>
+                  <b>Batters:</b> Rohit Sharma, Tim David (AUS), Suryakumar
+                  Yadav, N. Tilak Varma, Dewald Brevis (SA).
+                </p>{" "}
+                <p>
+                  <b>All-rounders:</b> Hardik Pandya, Romario Shepherd (WI),
+                  Nehal Wadhera, Shams Mulani, Gerald Coetzee (SA), Mohammad
+                  Nabi (AFG), Shivalik Sharma, Naman Dhir.
+                </p>{" "}
+                <p>
+                  <b>Bowlers:</b> Jasprit Bumrah, Jason Behrendorff (AUS), Kumar
+                  Kartikeya, Akash Madhwal, Arjun Tendulkar, Piyush Chawla,
+                  Dilshan Madushanka (SL), Nuwan Thushara (SL), Anshul Kamboj,
+                  Shreyas Gopal.
+                </p>
+              </div>
+            </div>
+            <div className=" p-3 rounded-md bg-[#eeedf0]   shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)]">
+              <p className="text-left font-semibold my-2 text-xl">
+                CSK Current squad
+              </p>
+              <div className="text-lg">
+                <b>Wicketkeepers:</b> MS Dhoni, Devon Conway (NZ), Avanish Rao
+                Aravelly.
+                <p>
+                  <b>Batters:</b> Ruturaj Gaikwad, Shaik Rasheed, Ajinkya
+                  Rahane, Sameer Rizvi.
+                </p>{" "}
+                <p>
+                  <b>All-rounders:</b> Moeen Ali (ENG), Shivam Dube, Rajvardhan
+                  Hangargekar, Ravindra Jadeja, Mitchell Santner (NZ), Ajay
+                  Mandal, Nishant Sindhu, Rachin Ravindra (NZ), Daryl Mitchell
+                  (NZ), Shardul Thakur.
+                </p>{" "}
+                <p>
+                  <b>Bowlers:</b> Deepak Chahar, Tushar Deshpande, Matheesha
+                  Pathirana (SL), Simarjeet Singh, Prashant Solanki, Maheesh
+                  Theekshana (SL), Mustafizur Rahman (BAN), Mukesh Choudhary.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="h-fit flex flex-col justify-center items-center  max-w-4xl w-[500px]  rounded-lg  m-5">
             <motion.p
               variants={zoomIn(0.4, 1.2)}
               className="text-2xl uppercase font-bold mt-5"
@@ -189,7 +238,7 @@ const PredictMatch = () => {
             </motion.p>
             <form
               onSubmit={handleSubmit(submitHandler)}
-              className="w-[400px] my-5 p-0 space-y-6 mx-auto"
+              className="w-[400px] my-5  p-0 space-y-6 mx-auto"
             >
               <div>
                 <label className="flex flex-row">

@@ -14,7 +14,7 @@ import Authform from "./pages/Authform";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App bg-[#e9e9eb]">
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Intro />}></Route>
