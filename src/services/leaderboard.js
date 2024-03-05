@@ -17,10 +17,9 @@ export const getLeaderBoard = async ({}) => {
     throw new Error(error.message);
   }
 };
-export const getUserSubmission = async ({ token }) => {
+export const getUserSubmission = async ({}) => {
   const config = {
     headers: {
-      Authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
     },
   };

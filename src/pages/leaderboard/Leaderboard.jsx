@@ -88,6 +88,18 @@ const Leaderboard = () => {
     },
     // Add more data as needed
   ];
+  const Leaderboarddata = {
+    leaderboards: ["Global", "Weekly"],
+    selected_leaderboard: "Global",
+    user_list:
+      '[{"model": "ipl2.userinfo", "pk": 5, "fields": {"user": 2, "username": "admin2", "name": "Pruthvi Raj", "email": "rajsavanur2003@gmail.com", "created_on": "2024-03-04T16:11:58Z", "score1": 0, "score2": 0}}, {"model": "ipl2.userinfo", "pk": 6, "fields": {"user": 3, "username": "test1", "name": "Test1", "email": "test1@gmail.com", "created_on": "2024-03-04T16:27:12Z", "score1": 0, "score2": 0}}, {"model": "ipl2.userinfo", "pk": 2, "fields": {"user": 29, "username": "test10", "name": "Test10", "email": "test10@gmail.com", "created_on": "2024-03-04T16:46:01.909Z", "score1": 0, "score2": 0}}, {"model": "ipl2.userinfo", "pk": 3, "fields": {"user": 30, "username": "test11", "name": "Test11", "email": "test11@gmail.com", "created_on": "2024-03-04T16:52:10Z", "score1": 0, "score2": 0}}, {"model": "ipl2.userinfo", "pk": 4, "fields": {"user": 31, "username": "test14", "name": "Test14", "email": "test14@gmail.com", "created_on": "2024-03-04T21:39:13.853Z", "score1": 0, "score2": 0}}, {"model": "ipl2.userinfo", "pk": 10, "fields": {"user": 32, "username": "test15", "name": "Test15", "email": "test15@gmail.com", "created_on": "2024-03-04T21:59:40.662Z", "score1": 0, "score2": 0}}, {"model": "ipl2.userinfo", "pk": 11, "fields": {"user": 33, "username": "test16", "name": "Test16", "email": "test16@gmail.com", "created_on": "2024-03-04T22:05:08.799Z", "score1": 0, "score2": 0}}, {"model": "ipl2.userinfo", "pk": 7, "fields": {"user": 23, "username": "test2", "name": "Test2", "email": "test2@gmail.com", "created_on": "2024-03-04T16:27:40Z", "score1": 0, "score2": 0}}, {"model": "ipl2.userinfo", "pk": 8, "fields": {"user": 24, "username": "test3", "name": "Test3", "email": "test3@gmail.com", "created_on": "2024-03-04T16:28:03Z", "score1": 0, "score2": 0}}, {"model": "ipl2.userinfo", "pk": 9, "fields": {"user": 4, "username": "test4", "name": "Test4", "email": "test4@gmail.com", "created_on": "2024-03-04T16:28:19Z", "score1": 0, "score2": 0}}, {"model": "ipl2.userinfo", "pk": 1, "fields": {"user": 27, "username": "test7", "name": "Test7", "email": "test7@gmail.com", "created_on": "2024-03-04T14:57:32.255Z", "score1": 0, "score2": 0}}]',
+  };
+  console.log(Leaderboarddata.selected_leaderboard);
+  // console.log(Leaderboarddata.user_list);
+  const jsondata = JSON.parse(Leaderboarddata.user_list);
+  console.log(jsondata);
+  jsondata.map((item) => console.log(item["fields"].name));
+
   const handleSearchInputChange = (event) => {
     setSearchQuery(event.target.value);
   };

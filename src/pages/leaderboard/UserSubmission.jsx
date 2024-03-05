@@ -7,6 +7,9 @@ import "../styles.css";
 import { FaArrowLeft } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
 import { IoMdArrowDropdown } from "react-icons/io";
+import { getUserSubmission } from "../../services/leaderboard";
+import { useQuery } from "@tanstack/react-query";
+import toast from "react-hot-toast";
 const itemVariants = {
   open: {
     opacity: 1,
@@ -31,6 +34,14 @@ const UserSubmission = () => {
   const handlePrevPage = () => {
     setCurrentPage((prevPage) => prevPage - 1);
   };
+  const { data, isLoading, isError, error } = useQuery({
+    queryFn: () => getUserSubmission({}),
+    queryKey: ["board"],
+    onError: (error) => {
+      toast.error(error.message);
+      console.log(error);
+    },
+  });
   const UserData = [
     {
       matchID: "1",
