@@ -10,6 +10,7 @@ import CTA from "../../Components/CTA";
 import { images } from "../../constants";
 import toast from "react-hot-toast";
 import MainLayout from "../../Components/MainLayout";
+import { predictMatch } from "../../services/fixtures";
 const PredictMatch = () => {
   const players = [
     "Faf du Plessis (SA)",
@@ -108,9 +109,10 @@ const PredictMatch = () => {
     "Gujarat Titans": "#008000", // Green
   };
 
-  const { mutate: addPredictMutation, isLoading } = useMutation({
-    mutationFn: ({}) => {
-      return {};
+  const match_id = useParams();
+  const { mutate, isLoading } = useMutation({
+    mutationFn: ({ match_id, formData }) => {
+      return predictMatch({ match_id, formData });
     },
     onSuccess: (data) => {
       toast.success("Success");
@@ -133,16 +135,19 @@ const PredictMatch = () => {
     mode: "onChange",
   });
 
-  const submitHandler = (data) => {
-    console.log(data);
-    const { team, player, runs, wickets } = data;
-    toast.success("Success");
-    addPredictMutation({
-      team,
-      player,
-      runs,
-      wickets,
-    });
+  const submitHandler = async (data) => {
+    try {
+      const formData = new FormData();
+      formData.append("predicted_winner_team", data.team);
+      formData.append("predicted_player_of_the_match", data.player);
+      formData.append("predicted_most_runs_scores", data.runs);
+      formData.append("predicted_most_wicket_taker", data.wickets);
+
+      mutate({ match_id: match_id, formData: formData });
+    } catch (error) {
+      console.error(error);
+      // Handle errors
+    }
   };
 
   return (

@@ -266,27 +266,27 @@ const Leaderboard = () => {
                   </thead>
 
                   <tbody className=" p-7">
-                    {filteredData
+                    {jsondata
                       .slice(startIndex, endIndex)
                       .map((record, index) => (
                         <tr className="" key={index}>
                           <td class="px-5 py-8 text-sm bg-white border-b flex items-center justify-center h-auto border-gray-200">
                             <div class=" w-8 h-8  text-center flex justify-center items-center text-black rounded-md whitespace-no-wrap">
-                              <p>{record.rank}</p>
+                              <p>{record["fields"].rank}</p>
                             </div>
                           </td>
                           <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
                             <div class="flex justify-center items-center">
                               <div class="ml-3">
                                 <p class="text-gray-900 whitespace-no-wrap">
-                                  {record.player}
+                                  {record["fields"].name}
                                 </p>
                               </div>
                             </div>
                           </td>
                           <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
                             <p class="text-gray-900 whitespace-no-wrap flex flex-row justify-center items-center">
-                              {record.level}
+                              {record["fields"].score1}
                               <span>
                                 <p></p>
                               </span>
