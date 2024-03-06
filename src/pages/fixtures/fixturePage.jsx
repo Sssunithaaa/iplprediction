@@ -16,6 +16,7 @@ const FixturePage = () => {
       link: "/fixtures",
     },
   ]);
+
   const matchData = [
     {
       matchID: 1,

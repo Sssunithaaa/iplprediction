@@ -116,7 +116,7 @@ const Leaderboard = () => {
   const endIndex = startIndex + recordsPerPage;
   return (
     <MainLayout>
-      <div className="flex flex-col mt-[100px] min-w-xl overflow-clip">
+      <div className="flex flex-col mt-[100px] min-w-2xl overflow-clip">
         <Breadcrumbs
           data={Breadcrumbsdata}
           activeName="Leaderboard"
@@ -136,7 +136,7 @@ const Leaderboard = () => {
           <div class="py-2 relative w-full">
             <div className="mx-14">
               <div class="flex flex-row justify-center items-center text-center w-full mb-1 mt-4 sm:mb-0">
-                <h2 class="text-2xl uppercase font-bold text-tertiary">
+                <h2 class="text-2xl uppercase text-center font-bold text-tertiary">
                   Leader Board
                 </h2>
               </div>
@@ -232,16 +232,16 @@ const Leaderboard = () => {
               </div>
             </div>
 
-            <div class="flex justify-center items-center py-4 w-90 mt-1  mx-0 px-0">
+            <div class="flex justify-center items-center py-4 w-full sm:w-[90%] mx-auto mt-1">
               <button
                 onClick={handlePrevPage}
                 disabled={currentPage === 0}
-                className="cursor-pointer mx-4 my-auto rounded-full bg-black/10 p-2 w-[48px] animate-pulse"
+                className="cursor-pointer ml-4 my-auto p-2 w-[48px] animate-pulse"
               >
                 <FaArrowLeft color="gray" />
               </button>
-              <div class="flex items-center border-2 w-screen border-gray-200 shadow-2xl shadow-black overflow-auto scrollbar-hide rounded-lg">
-                <table class=" lg:min-w-4xl w-[500px] leading-normal">
+              <div class="flex items-center border-2 xs:w-[90%] w-[90%] lg:w-full border-gray-200 shadow-2xl shadow-black scrollbar-hide rounded-lg">
+                <table class="sm:w-[550px] w-[600px]">
                   <thead>
                     <tr>
                       <th
@@ -300,7 +300,7 @@ const Leaderboard = () => {
               <button
                 onClick={handleNextPage}
                 disabled={endIndex >= leaderboardData.length}
-                className="cursor-pointer mx-4 my-auto rounded-full bg-black/10 p-2 w-[48px] animate-pulse"
+                className="cursor-pointer mr-4 my-auto p-2 w-[48px] animate-pulse"
               >
                 <FaArrowRight color="gray" />
               </button>

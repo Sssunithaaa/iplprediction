@@ -7,11 +7,16 @@ import { motion } from "framer-motion";
 import { fadeIn, slideIn, zoomIn } from "../../utils/motion";
 import { SectionWrapper } from "../../hoc";
 import CTA from "../../Components/CTA";
+import { useQuery } from "@tanstack/react-query";
+import { getMatchDetails } from "../../services/fixtures";
 import { images } from "../../constants";
 import toast from "react-hot-toast";
 import MainLayout from "../../Components/MainLayout";
 import { predictMatch } from "../../services/fixtures";
+import { useSelector } from "react-redux";
 const PredictMatch = () => {
+  const userState = useSelector((state) => state.user);
+
   const players = [
     "Faf du Plessis (SA)",
     "Virat Kohli",
@@ -121,6 +126,11 @@ const PredictMatch = () => {
       console.log(error.message);
     },
   });
+  const { data, isSuccess, isLoading1, isError } = useQuery({
+    queryFn: () => getMatchDetails({ match_id }),
+    onError: (error) => console.log(error),
+    queryKey: ["match", match_id],
+  });
   const {
     register,
     handleSubmit,
@@ -137,6 +147,7 @@ const PredictMatch = () => {
 
   const submitHandler = async (data) => {
     try {
+      console.log(data);
       const formData = new FormData();
       formData.append("predicted_winner_team", data.team);
       formData.append("predicted_player_of_the_match", data.player);
